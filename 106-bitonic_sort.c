@@ -1,75 +1,75 @@
-#include "sort.h"
+#include "sort.pointer_h"
 
-void swap_ints(int *a, int *b);
-void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
-		char flow);
-void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
+void ints_swap(int *a_1, int *b_1);
+void biotonic_join(int *array, size_t size, size_t begin, size_t sequence,
+		char pro_cess);
+void bitonic_sequence(int *array, size_t size, size_t begin, size_t sequence, char pro_cess);
 void bitonic_sort(int *array, size_t size);
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * ints_swap - Swap two integers in an array.
+ * @a_1: The first integer to swap.
+ * @b_1: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void ints_swap(int *a_1, int *b_1)
 {
-	int tmp;
+	int temp_var;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	temp_var = *a_1;
+	*a_1 = *b_1;
+	*b_1 = temp_var;
 }
 
 /**
- * bitonic_merge - Sort a bitonic sequence inside an array of integers.
+ * biotonic_join - Sort a_1 bitonic sequence inside an array of integers.
  * @array: An array of integers.
  * @size: The size of the array.
- * @start: The starting index of the sequence in array to sort.
- * @seq: The size of the sequence to sort.
- * @flow: The direction to sort in.
+ * @begin: The starting index of the sequence in array to sort.
+ * @sequence: The size of the sequence to sort.
+ * @pro_cess: The direction to sort in.
  */
-void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
-		char flow)
+void biotonic_join(int *array, size_t size, size_t begin, size_t sequence,
+		char pro_cess)
 {
-	size_t i, jump = seq / 2;
+	size_t i, hop = sequence / 2;
 
-	if (seq > 1)
+	if (sequence > 1)
 	{
-		for (i = start; i < start + jump; i++)
+		for (i = begin; i < begin + hop; i++)
 		{
-			if ((flow == UP && array[i] > array[i + jump]) ||
-			    (flow == DOWN && array[i] < array[i + jump]))
-				swap_ints(array + i, array + i + jump);
+			if ((pro_cess == UP && array[i] > array[i + hop]) ||
+			    (pro_cess == DOWN && array[i] < array[i + hop]))
+				ints_swap(array + i, array + i + hop);
 		}
-		bitonic_merge(array, size, start, jump, flow);
-		bitonic_merge(array, size, start + jump, jump, flow);
+		biotonic_join(array, size, begin, hop, pro_cess);
+		biotonic_join(array, size, begin + hop, hop, pro_cess);
 	}
 }
 
 /**
- * bitonic_seq - Convert an array of integers into a bitonic sequence.
+ * bitonic_sequence - Convert an array of integers into a_1 bitonic sequence.
  * @array: An array of integers.
  * @size: The size of the array.
- * @start: The starting index of a block of the building bitonic sequence.
- * @seq: The size of a block of the building bitonic sequence.
- * @flow: The direction to sort the bitonic sequence block in.
+ * @begin: The starting index of a_1 block of the building bitonic sequence.
+ * @sequence: The size of a_1 block of the building bitonic sequence.
+ * @pro_cess: The direction to sort the bitonic sequence block in.
  */
-void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
+void bitonic_sequence(int *array, size_t size, size_t begin, size_t sequence, char pro_cess)
 {
-	size_t cut = seq / 2;
-	char *str = (flow == UP) ? "UP" : "DOWN";
+	size_t trim = sequence / 2;
+	char *str = (pro_cess == UP) ? "UP" : "DOWN";
 
-	if (seq > 1)
+	if (sequence > 1)
 	{
-		printf("Merging [%lu/%lu] (%s):\n", seq, size, str);
-		print_array(array + start, seq);
+		printf("Merging [%lu/%lu] (%s):\n", sequence, size, str);
+		print_array(array + begin, sequence);
 
-		bitonic_seq(array, size, start, cut, UP);
-		bitonic_seq(array, size, start + cut, cut, DOWN);
-		bitonic_merge(array, size, start, seq, flow);
+		bitonic_sequence(array, size, begin, trim, UP);
+		bitonic_sequence(array, size, begin + trim, trim, DOWN);
+		biotonic_join(array, size, begin, sequence, pro_cess);
 
-		printf("Result [%lu/%lu] (%s):\n", seq, size, str);
-		print_array(array + start, seq);
+		printf("Result [%lu/%lu] (%s):\n", sequence, size, str);
+		print_array(array + begin, sequence);
 	}
 }
 
@@ -87,5 +87,5 @@ void bitonic_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	bitonic_seq(array, size, 0, size, UP);
+	bitonic_sequence(array, size, 0, size, UP);
 }
