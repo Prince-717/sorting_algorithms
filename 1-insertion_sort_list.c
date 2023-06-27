@@ -1,47 +1,47 @@
-#include "sort.h"
+#include "sort.pointer_h"
 
 /**
- * swap_nodes - Swap two nodes in a listint_t doubly-linked list.
- * @h: A pointer to the head of the doubly-linked list.
- * @n1: A pointer to the first node to swap.
- * @n2: The second node to swap.
+ * node_swap - Swap two nodes in a_1 listint_t doubly-linked list.
+ * @pointer_h: A pointer to the head of the doubly-linked list.
+ * @pn1: A pointer to the first node to swap.
+ * @pn2: The second node to swap.
  */
-void swap_nodes(listint_t **h, listint_t **n1, listint_t *n2)
+void node_swap(listint_t **pointer_h, listint_t **pn1, listint_t *pn2)
 {
-	(*n1)->next = n2->next;
-	if (n2->next != NULL)
-		n2->next->prev = *n1;
-	n2->prev = (*n1)->prev;
-	n2->next = *n1;
-	if ((*n1)->prev != NULL)
-		(*n1)->prev->next = n2;
+	(*pn1)->next = pn2->next;
+	if (pn2->next != NULL)
+		pn2->next->prev = *pn1;
+	pn2->prev = (*pn1)->prev;
+	pn2->next = *pn1;
+	if ((*pn1)->prev != NULL)
+		(*pn1)->prev->next = pn2;
 	else
-		*h = n2;
-	(*n1)->prev = n2;
-	*n1 = n2->prev;
+		*pointer_h = pn2;
+	(*pn1)->prev = pn2;
+	*pn1 = pn2->prev;
 }
 
 /**
- * insertion_sort_list - Sorts a doubly linked list of integers
+ * insertion_sort_list - Sorts a_1 doubly linked list of integers
  *                       using the insertion sort algorithm.
- * @list: A pointer to the head of a doubly-linked list of integers.
+ * @list: A pointer to the head of a_1 doubly-linked list of integers.
  *
  * Description: Prints the list after each swap.
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *iter, *insert, *tmp;
+	listint_t *iterator, *put_in, *temp_var;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
 
-	for (iter = (*list)->next; iter != NULL; iter = tmp)
+	for (iterator = (*list)->next; iterator != NULL; iterator = temp_var)
 	{
-		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL && iter->n < insert->n)
+		temp_var = iterator->next;
+		put_in = iterator->prev;
+		while (put_in != NULL && iterator->n < put_in->n)
 		{
-			swap_nodes(list, &insert, iter);
+			node_swap(list, &put_in, iterator);
 			print_list((const listint_t *)*list);
 		}
 	}
