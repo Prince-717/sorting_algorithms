@@ -1,17 +1,17 @@
-#include "sort.h"
+#include "sort.pointer_h"
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * ints_swap - Swap two integers in an array.
+ * @a_1: The first integer to swap.
+ * @b_1: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void ints_swap(int *a_1, int *b_1)
 {
-	int tmp;
+	int temp_var;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	temp_var = *a_1;
+	*a_1 = *b_1;
+	*b_1 = temp_var;
 }
 
 /**
@@ -24,7 +24,7 @@ void swap_ints(int *a, int *b)
  */
 void selection_sort(int *array, size_t size)
 {
-	int *min;
+	int *minimum;
 	size_t i, j;
 
 	if (array == NULL || size < 2)
@@ -32,13 +32,13 @@ void selection_sort(int *array, size_t size)
 
 	for (i = 0; i < size - 1; i++)
 	{
-		min = array + i;
+		minimum = array + i;
 		for (j = i + 1; j < size; j++)
-			min = (array[j] < *min) ? (array + j) : min;
+			minimum = (array[j] < *minimum) ? (array + j) : minimum;
 
-		if ((array + i) != min)
+		if ((array + i) != minimum)
 		{
-			swap_ints(array + i, min);
+			ints_swap(array + i, minimum);
 			print_array(array, size);
 		}
 	}
