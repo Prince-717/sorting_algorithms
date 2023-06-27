@@ -1,56 +1,56 @@
-#include "sort.h"
+#include "sort.pointer_h"
 
-int get_max(int *array, int size);
-void radix_counting_sort(int *array, size_t size, int sig, int *buff);
+int retrieve_max(int *array, int size);
+void radix_numbering_sort(int *array, size_t size, int cp_rt, int *bu_ffer);
 void radix_sort(int *array, size_t size);
 
 /**
- * get_max - Get the maximum value in an array of integers.
+ * retrieve_max - Get the maximum value in an array of integers.
  * @array: An array of integers.
  * @size: The size of the array.
  *
  * Return: The maximum integer in the array.
  */
-int get_max(int *array, int size)
+int retrieve_max(int *array, int size)
 {
-	int max, i;
+	int maximum, i;
 
-	for (max = array[0], i = 1; i < size; i++)
+	for (maximum = array[0], i = 1; i < size; i++)
 	{
-		if (array[i] > max)
-			max = array[i];
+		if (array[i] > maximum)
+			maximum = array[i];
 	}
 
-	return (max);
+	return (maximum);
 }
 
 /**
- * radix_counting_sort - Sort the significant digits of an array of integers
+ * radix_numbering_sort - Sort the significant digits of an array of integers
  *                       in ascending order using the counting sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
- * @sig: The significant digit to sort on.
- * @buff: A buffer to store the sorted array.
+ * @cp_rt: The significant digit to sort on.
+ * @bu_ffer: A buffer to store the arranged array.
  */
-void radix_counting_sort(int *array, size_t size, int sig, int *buff)
+void radix_numbering_sort(int *array, size_t size, int cp_rt, int *bu_ffer)
 {
-	int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int numb[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	size_t i;
 
 	for (i = 0; i < size; i++)
-		count[(array[i] / sig) % 10] += 1;
+		numb[(array[i] / cp_rt) % 10] += 1;
 
 	for (i = 0; i < 10; i++)
-		count[i] += count[i - 1];
+		numb[i] += numb[i - 1];
 
 	for (i = size - 1; (int)i >= 0; i--)
 	{
-		buff[count[(array[i] / sig) % 10] - 1] = array[i];
-		count[(array[i] / sig) % 10] -= 1;
+		bu_ffer[numb[(array[i] / cp_rt) % 10] - 1] = array[i];
+		numb[(array[i] / cp_rt) % 10] -= 1;
 	}
 
 	for (i = 0; i < size; i++)
-		array[i] = buff[i];
+		array[i] = bu_ffer[i];
 }
 
 /**
@@ -64,21 +64,21 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
  */
 void radix_sort(int *array, size_t size)
 {
-	int max, sig, *buff;
+	int maximum, cp_rt, *bu_ffer;
 
 	if (array == NULL || size < 2)
 		return;
 
-	buff = malloc(sizeof(int) * size);
-	if (buff == NULL)
+	bu_ffer = malloc(sizeof(int) * size);
+	if (bu_ffer == NULL)
 		return;
 
-	max = get_max(array, size);
-	for (sig = 1; max / sig > 0; sig *= 10)
+	maximum = retrieve_max(array, size);
+	for (cp_rt = 1; maximum / cp_rt > 0; cp_rt *= 10)
 	{
-		radix_counting_sort(array, size, sig, buff);
+		radix_numbering_sort(array, size, cp_rt, bu_ffer);
 		print_array(array, size);
 	}
 
-	free(buff);
+	free(bu_ffer);
 }
