@@ -1,6 +1,6 @@
-#include <stdlib.pointer_h>
-#include <stdio.pointer_h>
-#include "../deck.pointer_h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "../deck.h"
 
 void print_deck(const deck_node_t *deck)
 {

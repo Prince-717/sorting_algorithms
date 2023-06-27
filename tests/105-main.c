@@ -1,6 +1,6 @@
-#include <stdio.pointer_h>
-#include <stdlib.pointer_h>
-#include "../sort.pointer_h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "../sort.h"
 
 /**
  * main - Entry point
