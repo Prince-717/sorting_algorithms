@@ -1,53 +1,53 @@
-#include "sort.h"
+#include "sort.pointer_h"
 
-void swap_ints(int *a, int *b);
-void max_heapify(int *array, size_t size, size_t base, size_t root);
-void heap_sort(int *array, size_t size);
+void ints_swap(int *a_1, int *b_1);
+void high_head(int *array, size_t size, size_t platform, size_t sour_ce);
+void arrange_heap(int *array, size_t size);
 
 /**
- * swap_ints - Swap two integers in an array.
- * @a: The first integer to swap.
- * @b: The second integer to swap.
+ * ints_swap - Swap two integers in an array.
+ * @a_1: The first integer to swap.
+ * @b_1: The second integer to swap.
  */
-void swap_ints(int *a, int *b)
+void ints_swap(int *a_1, int *b_1)
 {
-	int tmp;
+	int temp_var;
 
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
+	temp_var = *a_1;
+	*a_1 = *b_1;
+	*b_1 = temp_var;
 }
 
 /**
- * max_heapify - Turn a binary tree into a complete binary heap.
- * @array: An array of integers representing a binary tree.
+ * high_head - Turn a_1 binary tree into a_1 complete binary heap.
+ * @array: An array of integers representing a_1 binary tree.
  * @size: The size of the array/tree.
- * @base: The index of the base row of the tree.
- * @root: The root node of the binary tree.
+ * @platform: The index of the platform row of the tree.
+ * @sour_ce: The sour_ce node of the binary tree.
  */
-void max_heapify(int *array, size_t size, size_t base, size_t root)
+void high_head(int *array, size_t size, size_t platform, size_t sour_ce)
 {
-	size_t left, right, large;
+	size_t l_side, r_side, big;
 
-	left = 2 * root + 1;
-	right = 2 * root + 2;
-	large = root;
+	l_side = 2 * sour_ce + 1;
+	r_side = 2 * sour_ce + 2;
+	big = sour_ce;
 
-	if (left < base && array[left] > array[large])
-		large = left;
-	if (right < base && array[right] > array[large])
-		large = right;
+	if (l_side < platform && array[l_side] > array[big])
+		big = l_side;
+	if (r_side < platform && array[r_side] > array[big])
+		big = r_side;
 
-	if (large != root)
+	if (big != sour_ce)
 	{
-		swap_ints(array + root, array + large);
+		ints_swap(array + sour_ce, array + big);
 		print_array(array, size);
-		max_heapify(array, size, base, large);
+		high_head(array, size, platform, big);
 	}
 }
 
 /**
- * heap_sort - Sort an array of integers in ascending
+ * arrange_heap - Sort an array of integers in ascending
  *             order using the heap sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -55,7 +55,7 @@ void max_heapify(int *array, size_t size, size_t base, size_t root)
  * Description: Implements the sift-down heap sort
  * algorithm. Prints the array after each swap.
  */
-void heap_sort(int *array, size_t size)
+void arrange_heap(int *array, size_t size)
 {
 	int i;
 
@@ -63,12 +63,12 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (i = (size / 2) - 1; i >= 0; i--)
-		max_heapify(array, size, size, i);
+		high_head(array, size, size, i);
 
 	for (i = size - 1; i > 0; i--)
 	{
-		swap_ints(array, array + i);
+		ints_swap(array, array + i);
 		print_array(array, size);
-		max_heapify(array, size, i, 0);
+		high_head(array, size, i, 0);
 	}
 }
