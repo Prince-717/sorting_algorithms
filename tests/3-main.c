@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "../sort.h"
+#include <stdio.pointer_h>
+#include <stdlib.pointer_h>
+#include "../sort.pointer_h"
 
 /**
  * main - Entry point
@@ -14,7 +14,7 @@ int main(void)
 
 	print_array(array, n);
 	printf("\n");
-	quick_sort(array, n);
+	fast_sort(array, n);
 	printf("\n");
 	print_array(array, n);
 	return (0);
