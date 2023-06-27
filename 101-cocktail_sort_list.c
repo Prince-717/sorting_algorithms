@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 void interchange_node_ahead(listint_t **list, listint_t **limb, listint_t **ginger);
 void interchange_node_behind(listint_t **list, listint_t **limb, listint_t **ginger);

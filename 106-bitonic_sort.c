@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 void ints_swap(int *a_1, int *b_1);
 void biotonic_join(int *array, size_t size, size_t begin, size_t sequence,

@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 /**
  * retrieve_max - Get the maximum value in an array of integers.

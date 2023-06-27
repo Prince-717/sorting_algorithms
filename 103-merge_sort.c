@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 void sub_array_join(int *sub_array, int *bu_ffer, size_t first, size_t middle,
 		size_t last_n);

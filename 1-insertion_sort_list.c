@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 /**
  * node_swap - Swap two nodes in a_1 listint_t doubly-linked list.

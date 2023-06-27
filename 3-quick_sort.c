@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 void ints_swap(int *a_1, int *b_1);
 int l_division(int *array, size_t size, int l_side, int r_side);

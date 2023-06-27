@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 void ints_swap(int *a_1, int *b_1);
 void high_head(int *array, size_t size, size_t platform, size_t sour_ce);

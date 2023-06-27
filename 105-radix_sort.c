@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 int retrieve_max(int *array, int size);
 void radix_numbering_sort(int *array, size_t size, int cp_rt, int *bu_ffer);

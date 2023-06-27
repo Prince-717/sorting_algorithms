@@ -1,4 +1,4 @@
-#include "deck.pointer_h"
+#include "deck.h"
 
 int _strcmp(const char *s1, const char *s2);
 char retrieve_val(deck_node_t *card);

@@ -1,4 +1,4 @@
-#include "sort.pointer_h"
+#include "sort.h"
 
 /**
  * ints_swap - Swap two integers in an array.
